@@ -1,0 +1,19 @@
+<table>
+  <thead>
+    <tr>
+      @for (variable of vars(); track variable) {
+        <th>{{ variable }}</th>
+      }
+      <th>Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (row of rows(); track row) {
+      <tr>
+        @for (variable of vars(); track variable) {
+          <td>{{ row[variable] }}</td>
+        }
+      </tr>
+    }
+  </tbody>
+</table>

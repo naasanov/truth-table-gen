@@ -1,7 +1,12 @@
 <main>
   <h1>Truth Table Generator</h1>
   <label for="logic-input">Enter your logic expression:</label>
-  <input id="logic-input" type="text" placeholder="e.g. A && B" />
-  <!-- More UI can go here -->
-  hello
+  <input
+    id="logic-input"
+    type="text"
+    placeholder="e.g. A | B"
+    [value]="expression()"
+    (input)="updateExpression($event)"
+  />
+  <app-truth-table [expression]="expression()"></app-truth-table>
 </main>
