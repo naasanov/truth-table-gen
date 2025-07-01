@@ -1,0 +1,39 @@
+@import "../../styles.scss";
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 10px;
+}
+
+td,
+th {
+  border: 1px solid $text-secondary;
+  min-width: 50px;
+  padding: 5px;
+  text-align: center;
+
+  &:first-child {
+    border-left: none;
+  }
+
+  &:last-child {
+    border-right: none;
+  }
+}
+
+th {
+  border-top: none;
+}
+
+tr {
+  &:last-child {
+    td {
+      border-bottom: none;
+    }
+  }
+}
+
+tr:hover {
+  background-color: rgba($accent, 0.1);
+}

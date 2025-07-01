@@ -1,0 +1,53 @@
+@import "../../styles.scss";
+
+h2 {
+  color: $text-primary;
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.operators-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.operator-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem;
+  background: rgba($accent, 0.05);
+  border: 1px solid rgba($accent, 0.2);
+  border-radius: 6px;
+  gap: 1rem;
+}
+
+.operator-symbol {
+  font-family: "Courier New", monospace;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: $accent;
+  min-width: 2.5rem;
+  text-align: center;
+  padding: 0.5rem;
+  background: rgba($accent, 0.1);
+  border-radius: 4px;
+}
+
+.operator-info {
+  flex: 1;
+}
+
+.operator-name {
+  font-weight: 600;
+  color: $text-primary;
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.operator-description {
+  font-size: 0.875rem;
+  color: $text-secondary;
+  line-height: 1.4;
+}

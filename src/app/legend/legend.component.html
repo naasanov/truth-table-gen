@@ -1,0 +1,12 @@
+<h2>Boolean Operators</h2>
+<div class="operators-grid">
+  @for (operator of operators; track operator.symbol) {
+  <div class="operator-item">
+    <div class="operator-symbol">{{ operator.symbol }}</div>
+    <div class="operator-info">
+      <div class="operator-name">{{ operator.name }}</div>
+      <div class="operator-description">{{ operator.description }}</div>
+    </div>
+  </div>
+  }
+</div>

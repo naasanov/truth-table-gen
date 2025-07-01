@@ -1,4 +1,4 @@
-<main>
+<app-card>
   <h1>Truth Table Generator</h1>
   <label for="logic-input">Enter your logic expression:</label>
   <input
@@ -7,6 +7,11 @@
     placeholder="e.g. A | B"
     [value]="expression()"
     (input)="updateExpression($event)"
+    autocomplete="off"
+    spellcheck="false"
   />
   <app-truth-table [expression]="expression()"></app-truth-table>
-</main>
+</app-card>
+<app-card>
+  <app-legend></app-legend>
+</app-card>

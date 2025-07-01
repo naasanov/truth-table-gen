@@ -2,18 +2,19 @@
   <thead>
     <tr>
       @for (variable of vars(); track variable) {
-        <th>{{ variable }}</th>
+      <th>{{ variable }}</th>
       }
       <th>Result</th>
     </tr>
   </thead>
   <tbody>
     @for (row of rows(); track row) {
-      <tr>
-        @for (variable of vars(); track variable) {
-          <td>{{ row[variable] }}</td>
-        }
-      </tr>
+    <tr>
+      @for (variable of vars(); track variable) {
+      <td>{{ row[variable] ? "T" : "F" }}</td>
+      }
+      <td>{{ evaluateRow(row) ? "T" : "F" }}</td>
+    </tr>
     }
   </tbody>
 </table>

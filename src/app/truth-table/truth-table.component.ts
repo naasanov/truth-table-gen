@@ -1,7 +1,7 @@
 import { Component, computed, input } from '@angular/core';
+import { EvalService } from '../services/eval/eval.service';
 
-type TruthValue = "T" | "F";
-type TableRow = Record<string, TruthValue>;
+export type TruthValues = Record<string, boolean>;
 
 @Component({
   selector: 'app-truth-table',
@@ -11,7 +11,10 @@ type TableRow = Record<string, TruthValue>;
   styleUrl: './truth-table.component.scss',
 })
 export class TruthTableComponent {
+  constructor(private evalService: EvalService) {}
+
   expression = input.required<string>();
+
   vars = computed(() => {
     const chars = this.expression().split('');
     const uniqueVars = new Set<string>(
@@ -19,18 +22,23 @@ export class TruthTableComponent {
     );
     return Array.from(uniqueVars).sort();
   });
-  rows = computed<TableRow[]>(() => {
-    return this.combinationsOf(this.vars());
-  })
 
-  combinationsOf(cols: string[]): TableRow[] {
+  rows = computed<TruthValues[]>(() => {
+    return this.combinationsOf(this.vars());
+  });
+
+  private combinationsOf(cols: string[]): TruthValues[] {
     const [first, ...rest] = cols;
     if (cols.length <= 0) return [];
-    if (cols.length === 1) return [{ [first]: "T"}, {[first]: "F"}];
+    if (cols.length === 1) return [{ [first]: false }, { [first]: true }];
 
     return [
-      ...this.combinationsOf(rest).map(c => ({ [first]: "T" as TruthValue, ...c })),
-      ...this.combinationsOf(rest).map(c => ({ [first]: "F" as TruthValue, ...c })),
-    ]
+      ...this.combinationsOf(rest).map((c) => ({ [first]: false, ...c })),
+      ...this.combinationsOf(rest).map((c) => ({ [first]: true, ...c })),
+    ];
+  }
+
+  evaluateRow(row: TruthValues): boolean {
+    return this.evalService.evaluateExpression(this.expression(), row);
   }
 }
