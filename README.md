@@ -1,6 +1,6 @@
 # TruthTableGen
 
-Generate a truth table for any boolean expression!
+Generate a truth table for any boolean expression, try it out [here](https://naasanov.github.io/truth-table-gen/)!
 
 GUI done with Angular.
 
